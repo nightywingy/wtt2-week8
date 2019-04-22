@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       email: new FormControl(null, [Validators.email, Validators.required])
     });
   }
-
+  //
   get nama() {
     return this.myReactiveForm.get("nama");
   }
