@@ -1,0 +1,113 @@
+<h1>Student Details</h1>
+
+<body>
+  <form (ngSubmit)="submit2()" [formGroup]="myReactiveForm">
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Nama:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="nama" />
+      </div>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.required && nama.touched">
+      Name is required
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.minlength && nama.touched">
+      Atribut nama harus minimal 5 karakter
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.maxlength && nama.touched">
+      Atribut nama harus maksimal 20 karakter
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.pattern">
+      Nama invalid
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Faculty:</label>
+      <div class="col-sm-10">
+        <select class="col-sm-12 col-form-label" type="text" formControlName="faculty">
+          <option value="" [selected]="true" [disabled]="true">Pick Category</option>
+          <option value="Teknik Informatika">TI</option>
+          <option value="Ekonomi">Ekonomi</option>
+          <option value="Teknik Otomotif">Teknik Mesin</option>
+          <option value="Manajemen">Manajemen</option>
+          <option value="DKV">DKV</option>
+          <option value="Teknik Lingkungan">Teknik Lingkungan</option>
+          <option value="Hukum">Hukum</option>
+        </select>
+      </div>
+    </div>
+    <br />
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">NIM:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="nim">
+        <div class="alert alert-warning" role="alert" *ngIf="nim.errors?.required && nim.touched">
+          Nim is required
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="nim.errors?.pattern">
+          Nim is invalid
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Entry Date:</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" formControlName="entrydate">
+        <div class="alert alert-warning" role="alert" *ngIf="entrydate.errors?.required && entrydate.touched">
+          Entry date is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Birth Date:</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" formControlName="birthdate">
+        <div class="alert alert-warning" role="alert" *ngIf="birthdate.errors?.required && birthdate.touched">
+          Birth date is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Address:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="address">
+        <div class="alert alert-warning" role="alert" *ngIf="address.errors?.required && address.touched">
+          Address is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row blue-border">
+      <label class="col-sm-2 col-form-label">Notes:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea3" rows="7"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phone Number:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" formControlName="phone" placeholder="+62">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Email:</label>
+      <div class="col-sm-10">
+        <input ng-model="email" class="form-control" formControlName="email">
+        <div class="alert alert-warning" role="alert" *ngIf="email.errors?.required && email.touched">
+          Email is required
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="email.errors?.email">
+          email is invalid
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" formControlName="check">
+      <label class="form-check-label" for="exampleCheck1">saya setuju dengan syarat dan ketentuan yang berlaku</label>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit" [disabled]="myReactiveForm.invalid" />
+  </form>
+</body>
